@@ -36,33 +36,11 @@ public class MovieController {
 //		return movie;
 //	}
 
-	@GetMapping("find-movie-title/{title}")
-	public Movie findTitle(@PathVariable("title") String title) {
-		Movie movie = m.findByTitle(title);
-		return movie;
-	}
-
-	@GetMapping("category-types")
-	public TreeSet<String> findDistinctCat() {
-		return m.findDistinctCategory();
-	}
-
-	@GetMapping("find-by-director/{name}")
-	public List<Movie> findDirector(@PathVariable("name") String director) {
-		return m.findByDirector(director);
-	}
-
 	@GetMapping("find-movie-in-category/{category}")
 	public List<Movie> findMovieInCategory(@PathVariable("category") String category) {
 		List<Movie> movie = m.findByCategory(category);
 		return movie;
 
-	}
-
-	@GetMapping("find-by-key-word/{keyword}")
-	public List<Movie> findByKewWord(@PathVariable("keyword") String keyWord) {
-		List<Movie> movie = m.findByTitleContains(keyWord);
-		return movie;
 	}
 
 	@GetMapping("find-random-movie")
@@ -74,10 +52,32 @@ public class MovieController {
 	public List<Movie> findRandCategory(@PathVariable("cat") String cat) {
 		return m.findByRandCategory(cat);
 	}
-	
+
 	@GetMapping("find-random-movie-list/{num}")
-	public List<Movie> findRandMovieList(@PathVariable("num")int num){
+	public List<Movie> findRandMovieList(@PathVariable("num") int num) {
 		List<Movie> movie = m.findByRandMovieList(num);
+		return movie;
+	}
+
+	@GetMapping("category-types")
+	public TreeSet<String> findDistinctCat() {
+		return m.findDistinctCategory();
+	}
+
+//	@GetMapping("find-by-director/{name}")
+//	public List<Movie> findDirector(@PathVariable("name") String director) {
+//		return m.findByDirector(director);
+//	}
+
+	@GetMapping("find-movie-title/{title}")
+	public Movie findTitle(@PathVariable("title") String title) {
+		Movie movie = m.findByTitle(title);
+		return movie;
+	}
+
+	@GetMapping("find-by-key-word/{keyword}")
+	public List<Movie> findByKewWord(@PathVariable("keyword") String keyWord) {
+		List<Movie> movie = m.findByTitleContains(keyWord);
 		return movie;
 	}
 }
